@@ -1905,22 +1905,39 @@ public function sleepRecovery(display:Boolean = false):void {
 	//REGULAR HP/FATIGUE RECOVERY
 	HPChange(timeQ * hpRecovery * multiplier, display);
 	//fatigue
-	player.tone--;
+
+	if (flags[kFLAGS.ACTIVITY_SCORE] < 1) player.tone--;
+	var statCount:Number = ((player.str + player.tou + player.spe) / 60);
+	if(statCount < 1) statCount = 1;
+	flags[kFLAGS.ACTIVITY_SCORE] -= statCount;
+
 	player.changeFatigue(-(timeQ * fatRecovery * multiplier));
-	if (player.tone < 75 && player.str > player.tone && player.str > 40) {
-		outputText("\nYou feel your body weaken from lack of physical activity.\n");
-		dynStats("str", -1);
-	}
-	if (player.tone < 75 && player.tou > player.tone && player.tou > 40) {
-		outputText("\nYour skin feels softer from lack of physical activity.\n");
-		dynStats("tou", -1);
-	}
-	if (player.tone < 75 && player.spe > player.tone && player.spe > 40) {
-		outputText("\nYou feel slower from lack of physical activity.\n");
-		dynStats("spe", -1);
-		if (player.thickness > player.tone) {
-			outputText("Your excess weight slows you down considerably.\n");
-			dynStats("spe", -1);
+
+	if(flags[kFLAGS.ACTIVITY_SCORE] < 0) {
+		var pickOne:Number = (Math.floor(Math.random() * 3 + 1));
+		switch (pickOne) {
+			case 1:
+				if (player.tone < 75 && player.spe > player.tone && player.spe > 40) {
+					outputText("\nYou feel slower from lack of physical activity.");
+					dynStats("spe", -1);
+					if (player.thickness > player.tone) {
+						outputText(" Moreso accentuated by your excess weight.\n");
+						dynStats("spe", -1);
+					}
+				}
+				break;
+			case 2:
+				if (player.tone < 75 && player.str > player.tone && player.str > 40) {
+					outputText("\nYou feel your body weaken from lack of physical activity.\n");
+					dynStats("str", -1);
+				}
+				break;
+			case 3:
+				if (player.tone < 75 && player.tou > player.tone && player.tou > 40) {
+					outputText("\nYour skin feels softer from lack of physical activity.\n");
+					dynStats("tou", -1);
+				}
+				break;
 		}
 	}
 }

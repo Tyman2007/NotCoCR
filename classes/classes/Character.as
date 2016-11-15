@@ -796,6 +796,7 @@ import classes.GlobalFlags.kFLAGS;
 		public function maxLust():Number
 		{
 			var max:Number = 100;
+			max += lib;
 			if (game.player.demonScore() >= 4) max += 20;
 			if (findPerk(PerkLib.ImprovedSelfControl) >= 0) max += 20;
 			if (findPerk(PerkLib.BroBody) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.FutaForm) >= 0) max += 20;

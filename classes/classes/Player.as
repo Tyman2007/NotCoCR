@@ -1995,7 +1995,8 @@ use namespace kGAMECLASS;
 			mod *= costPercent/100;
 			return mod;
 		}
-		
+
+
 		//Modify fatigue
 		//types:
 		//  0 - normal

@@ -2506,8 +2506,8 @@ public static const UNKNOWN_FLAG_NUMBER_02497:int                               
 public static const UNKNOWN_FLAG_NUMBER_02498:int                                   = 2498;
 public static const UNKNOWN_FLAG_NUMBER_02499:int                                   = 2499;
 public static const IZUMI_LOSSES:int                                                = 2500;
-public static const UNKNOWN_FLAG_NUMBER_02501:int                                   = 2501;
-public static const UNKNOWN_FLAG_NUMBER_02502:int                                   = 2502;
+public static const ACTIVITY_SCORE:int                                              = 2501;
+public static const DELAY_SCORE:int                                                 = 2502;
 public static const UNKNOWN_FLAG_NUMBER_02503:int                                   = 2503;
 public static const UNKNOWN_FLAG_NUMBER_02504:int                                   = 2504;
 public static const UNKNOWN_FLAG_NUMBER_02505:int                                   = 2505;
