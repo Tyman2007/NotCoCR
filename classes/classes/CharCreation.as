@@ -137,7 +137,7 @@
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player = new Player();
 			model.player = player;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
-				player.str = 15;
+				player.str = 20;
 				player.tou = 15;
 				player.spe = 15;
 				player.inte = 15;
@@ -551,7 +551,7 @@
 			player.balls = 0;
 			player.ballSize = 0;
 			player.createVagina();
-			player.clitLength = 0.5;
+			player.clitLength = 0.2;
 			
 			//Breasts
 			player.createBreastRow();
@@ -582,7 +582,7 @@
 			
 			//Genetalia
 			player.createVagina();
-			player.clitLength = .5;
+			player.clitLength = .2;
 			player.createCock();
 			player.cocks[0].cockLength = 5.5;
 			player.cocks[0].cockThickness = 1;
@@ -868,7 +868,7 @@
 		private function setHeight():void {
 			clearOutput();
 			outputText("Set your height in inches.");
-			outputText("\nYou can choose any height between 4 feet (48 inches) and 8 feet (96 inches).");
+			outputText("\nYou can choose any height between 4 feet (48 inches) and 7 feet (84 inches).");
 			mainView.nameBox.visible = true;
 			mainView.nameBox.maxChars = 2;
 			mainView.nameBox.restrict = "0-9";
@@ -903,7 +903,7 @@
 				doNext(setHeight);
 				return;
 			}
-			if (int(mainView.nameBox.text) > 96)
+			if (int(mainView.nameBox.text) > 84)
 			{
 				outputText("That is above your maximum height choices!", true)
 				//Off to the height selection!

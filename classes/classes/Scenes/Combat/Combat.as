@@ -846,7 +846,7 @@ package classes.Scenes.Combat
 				
 			if (player.findPerk(PerkLib.HoldWithBothHands) >= 0 && player.weapon != WeaponLib.FISTS && player.shield == ShieldLib.NOTHING && !isWieldingRangedWeapon()) damage *= 1+(player.str * 0.005);
 			//Weapon addition!
-			damage *= 0.1 + (player.weaponAttack/10);
+			damage *= 0.5 + (player.weaponAttack/10);
 			if (damage < 1) damage = 1;
 			//Bonus sand trap damage!
 			if (monster.findStatusEffect(StatusEffects.Level) >= 0) damage = Math.round(damage * 1.75);

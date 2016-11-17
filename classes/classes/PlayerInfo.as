@@ -554,7 +554,7 @@ package classes
 				player.XP -= player.requiredXP();
 				player.level++;
 				player.perkPoints++;
-				player.statPoints += 5;
+				player.statPoints += 2;
 				if (player.level % 2 == 0) player.ascensionPerkPoints++;
 				outputText("<b>You are now level " + num2Text(player.level) + "!</b>\n\nYou have gained five attribute points and one perk point!");
 				doNext(attributeMenu);

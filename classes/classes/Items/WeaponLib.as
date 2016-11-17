@@ -12,6 +12,7 @@ package classes.Items
 		public static const FISTS:Fists = new Fists();
 
 		public const B_SWORD:Weapon = new BeautifulSword();
+		public const U_SWORD:Weapon = new UglySword();
 		public const B_SCARB:Weapon = new Weapon("B.ScarB", "B.ScarBlade", "broken scarred blade", "a broken scarred blade", "slash", 12, 1000, "This saber, made from lethicite-imbued metal, seems to no longer seek flesh; whatever demonic properties in this weapon is gone now but it's still an effective weapon.");
 		public const BLUNDER:Weapon = new Weapon("Blunder", "Blunderbuss", "blunderbuss", "a blunderbuss", "shot", 16, 600, "This is a blunderbuss. It's effective at short range but poor at long range.", "Ranged");
 		public const CLAYMOR:Weapon = new LargeClaymore();

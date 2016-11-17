@@ -117,9 +117,21 @@ public function farmExploreEncounter():void {
 		//choices("Explore",exploreFarm,"Kelt",keltEvent,"Get Milked",milkYou,"Marble",marble,"Milk Jojo",milkJojo,"Milk Cock",cockMilk,"Talk",talkWhitney,"Work",workFarm,"",0,"Leave",13);
 		if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(0,"Explore",exploreFarm);
 		if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(6,"Talk",talkWhitney);
-		if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(7,"Work",workFarm);
+		if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) addButton(7,"Work",workFarmCheck);
 		addButton(14,"Leave",camp.returnToCampUseOneHour);		
 	}		
+}
+
+private function workFarmCheck():void {
+	clearOutput();
+	if(player.maxFatigue() - player.fatigue >= 30) {
+		player.fatigue -= 30;
+		workFarm();
+	}
+	else {
+		outputText("You are too tired to work.");
+		doNext(farmExploreEncounter);
+	}
 }
 
 //[YES]
@@ -428,8 +440,8 @@ public function workFarm():void {
 		dynStats("lus", player.cowScore() + player.minoScore());
 		outputText("\n\nAn hour later you can stand it no more and exit the milking barn. Gulping down the fresher air and dragging the tools back to their shed, you admit to yourself that Whitney is a much harder worker and has a stronger constitution than you thought. You promise yourself you'll come back and help her out some more -- as soon as your nose recovers.", false);
 		//always +1 str till 50, then 50% chance.
-		if (player.str <= 50) dynStats("str", 1);
-		else dynStats("str", rand(2));
+		if (player.str < 40) dynStats("str", 1);
+
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
@@ -535,28 +547,39 @@ public function exploreFarm():void {
 	//[JOG]
 	if (explore == 0) {
 		spriteSelect(62);
-		outputText("You run around the farm, keeping an eye for any monsters or oddities around Whitney's property.  Eventually the she-dog joins you, and the two of you have a good time pushing your speed to its limits.  ", true);
-		//Less than 30 speed (+2 speed)
-		if (player.spe < 30) {
-			dynStats("spe", 2);
-			outputText("Whitney easily outpaces you, leaving you so far behind that she laps around the farm twice for each pass you make.", false);
+
+		outputText("As you walk around the farm, you see Whitney running towards you. She stops right beside you and asks if she could come along. ");
+
+		if(player.fatigue < 95) {
+			outputText("You decide to let the she-dog join you, and the two of you decide to have a good time pushing your speed to its limits.  ", true);
+
+			//Less than 30 speed (+2 speed)
+			if (player.spe < 20) {
+				dynStats("spe", 1);
+				outputText("Whitney easily outpaces you, leaving you so far behind that she laps around the farm twice for each pass you make.", false);
+				player.fatigue += 25;
+			}
+			//Less than 50 speed (+1 speed)
+			else if (player.spe < 30) {
+				dynStats("spe", .5);
+				player.fatigue += 15;
+				outputText("Whitney is still faster than you, and manages to get far enough ahead of you to disappear from time to time.", false);
+			}
+			//Less than 70 speed (+.75 speed)
+			else if (player.spe < 40) {
+				dynStats("spe", .25);
+				player.fatigue += 5;
+				outputText("Whitney and you are evenly matched, and the two of you run together for a while, each pushing yourself harder in an effort to best the other.", false);
+			}
+			//Else (+.5 speed)
+			else {
+				//dynStats("spe", .5);
+				outputText("Whitney falls behind, unable to cope with your speed as you tear around the farm.", false);
+			}
+			outputText("\n\nAfterwards, the both of you lie back against a tree, panting heavily and exchanging pleasantries.  Once you've both had a chance to rest, she bids you farewell and returns to her labors, leaving you to journey home to camp.", false);
+		} else {
+			outputText("You decide to let the she-dog join you. She offers to race, but you are way too exhausted to even think about doing something like running. She has a disappointed look on her face from the refusal, but just heaves a heavy sigh, puts on a smile, and the two of you have a nice leasurely walk together.");
 		}
-		//Less than 50 speed (+1 speed)
-		else if (player.spe < 50) {
-			dynStats("spe", 1);
-			outputText("Whitney is still faster than you, and manages to get far enough ahead of you to disappear from time to time.", false);
-		}
-		//Less than 70 speed (+.75 speed)
-		else if (player.spe < 70) {
-			dynStats("spe", .75);
-			outputText("Whitney and you are evenly matched, and the two of you run together for a while, each pushing yourself harder in an effort to best the other.", false);
-		}
-		//Else (+.5 speed)
-		else {
-			dynStats("spe", .5);
-			outputText("Whitney falls behind, unable to cope with your speed as you tear around the farm.", false);
-		}
-		outputText("\n\nAfterwards, the both of you lie back against a tree, panting heavily and exchanging pleasantries.  Once you've both had a chance to rest, she bids you farewell and returns to her labors, leaving you to journey home to camp.", false);
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}

@@ -146,6 +146,9 @@ package classes.Scenes.Areas
 		public function exploreForest():void
 		{
 			clearOutput();
+
+			flags[kFLAGS.EXPLORE_AREA] = 1;
+
 			//Increment forest exploration counter.
 			player.exploredForest++;
 
