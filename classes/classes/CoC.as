@@ -8,7 +8,10 @@
 ﻿package classes
 {
 	// BREAKING ALL THE RULES.
-	import classes.GlobalFlags.kFLAGS; // This file contains most of the persistent gamestate flags.
+	import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.DeepCombat.DeepCombat;
+
+// This file contains most of the persistent gamestate flags.
 	import classes.GlobalFlags.kGAMECLASS; // This file creates the gameclass that the game will run within.
 	import classes.GlobalFlags.kACHIEVEMENTS; // This file creates the flags for the achievements system.
 	import classes.Scenes.Combat.Combat;
@@ -81,6 +84,8 @@ the text from being too boring.
 	import classes.Scenes.Places.TelAdre.*;
 	import classes.Scenes.Seasonal.*;
 	import classes.Scenes.Quests.*;
+
+	import classes.Scenes.Explore.Areas.DEForest;
 	import coc.view.MainView; // Creates the framework for the game screen.
 	import coc.model.GameModel; // Uncertain.
 	import coc.model.TimeModel; // Various time-related functions for setting the game clock and querying its state.
@@ -193,6 +198,7 @@ the text from being too boring.
 		public var bog:Bog = new Bog();
 		public var desert:Desert = new Desert();
 		public var forest:Forest = new Forest();
+		public var deforest:DEForest = new DEForest();
 		public var glacialRift:GlacialRift = new GlacialRift();
 		public var highMountains:HighMountains = new HighMountains();
 		public var lake:Lake = new Lake();
@@ -202,6 +208,8 @@ the text from being too boring.
 		public var volcanicCrag:VolcanicCrag = new VolcanicCrag();
 		// Scenes/Combat/
 		public var combat:Combat = new Combat();
+		public var decombat:DeepCombat = new DeepCombat();
+		public var demonlib:DeepMonsterLib = new DeepMonsterLib();
 		// Scenes/Dungeons
 		public var brigidScene:BrigidScene = new BrigidScene();
 		public var d3:D3 = new D3();

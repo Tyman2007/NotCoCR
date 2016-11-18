@@ -28,6 +28,7 @@ package classes
 		//"a" refers to how the article "a" should appear in text. 
 		private var _short:String = "You";
 		private var _a:String = "a ";
+		public var monRace:String = "";
 		public function get short():String { return _short; }
 		public function set short(value:String):void { _short = value; }
 		public function get a():String { return _a; }
@@ -115,6 +116,10 @@ package classes
 		public function set lowerGarmentName(value:String):void { _lowerGarmentName = value; }
 		public function set lowerGarmentPerk(value:String):void { _lowerGarmentPerk = value; }
 		public function set lowerGarmentValue(value:Number):void { _lowerGarmentValue = value; }
+
+		//Texts!
+		public var attackText1:String;
+
 		//Primary stats
 		public var str:Number = 0;
 		public var tou:Number = 0;
@@ -124,11 +129,17 @@ package classes
 		public var sens:Number = 0;
 		public var cor:Number = 0;
 		public var fatigue:Number = 0;
+
+		//somethin
+		public var strRate:Number = 0;
+		public var touRate:Number = 0;
+		public var speRate:Number = 0;
+		public var inteRate:Number = 0;
 		
 		//Combat Stats
 		public var HP:Number = 0;
-		public var lust:Number = 0;		
-		
+		public var lust:Number = 0;
+
 		//Level Stats
 		public var XP:Number = 0;
 		public var level:Number = 0;

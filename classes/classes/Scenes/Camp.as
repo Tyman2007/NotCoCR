@@ -5,7 +5,8 @@
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.*;
 	import classes.Scenes.Camp.*;
-	import classes.Scenes.NPCs.*;
+import classes.Scenes.Explore.DeepExplore;
+import classes.Scenes.NPCs.*;
 	import classes.Scenes.Dungeons.*;
 
 	import coc.view.MainView;
@@ -51,6 +52,7 @@
 		public var dungeon2:DeepCave = new DeepCave();
 		public var dungeonS:DesertCave = new DesertCave();
 		public var dungeonH:HelDungeon = new HelDungeon();
+		private var de:DeepExplore = new DeepExplore();
 		
 /* Replaced with calls to playerMenu
 		public function campMenu():void {
@@ -68,7 +70,9 @@
 			timeQ = timeUsed;
 			goNext(timeUsed, false);
 		}
-		
+
+		public function returnToCampUseNoHour():void { returnToCamp(0); }
+
 		public function returnToCampUseOneHour():void { returnToCamp(1); } //Replacement for event number 13;
 		
 		public function returnToCampUseTwoHours():void { returnToCamp(2); } //Replacement for event number 14;
@@ -784,6 +788,7 @@ private function doCamp():void { //Only called by playerMenu
 	menu();
 	addButton(0, "Explore", exploreEvent, null, null, null, "Explore to find new regions and visit any discovered regions.");
 	addButton(1, "Places", placesEvent, null, null, null, "Visit any places you have discovered so far.");
+	addButton(7, "DeepExplore", de.DExplore);
 	addButton(2, "Inventory", inventory.inventoryMenu, null, null, null, "The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
 	if (inventory.showStash()) addButton(3, "Stash", inventory.stash, null, null, null, "The stash allows you to store your items safely until you need them later.");
 	addButton(4, "Camp Actions", campActions, null, null, null, "Interact with the camp surroundings and also read your codex.");

@@ -128,7 +128,7 @@ package classes.Scenes.Areas
 			//Chance of dick-dragging! 10% + 10% per two foot up to 30%
 			else if (select == 8) {
 				//True sets to use lake scene!
-				kGAMECLASS.forest.bigJunkForestScene(true);
+				kGAMECLASS.deforest.bigJunkForestScene(true);
 			}
 			else if (select == 4) {
 				//Chance of seeing ooze convert goo!
