@@ -29,6 +29,7 @@ package classes
 		private var _short:String = "You";
 		private var _a:String = "a ";
 		public var monRace:String = "";
+		public var monID:Number;
 		public function get short():String { return _short; }
 		public function set short(value:String):void { _short = value; }
 		public function get a():String { return _a; }
@@ -118,7 +119,20 @@ package classes
 		public function set lowerGarmentValue(value:Number):void { _lowerGarmentValue = value; }
 
 		//Texts!
-		public var attackText1:String;
+		///**
+		 //* Arrays
+			public var attackPreText:Array = new Array();
+			public var attackPostText:Array = new Array();
+			public var teasePreText:Array = new Array();
+			public var teasePostText:Array = new Array();
+		//*/
+
+		/**
+		public var attackPreText:String;
+		public var attackPostText:String;
+		public var teasePreText:String;
+		public var teasePostText:String;
+		 */
 
 		//Primary stats
 		public var str:Number = 0;

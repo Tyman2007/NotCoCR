@@ -36,6 +36,7 @@ import classes.Scenes.Combat.*;
 	{
 		private var fighter:DeepMonster;
 		private var monHP:Number;
+		private var dmAI:DeepMonsterAI = new DeepMonsterAI();
 
 		public function DeepCombat() { }
 
@@ -75,12 +76,7 @@ import classes.Scenes.Combat.*;
 			outputText("You stare at him menacingly. You deal " + int(damage) + " damage.\n\n");
 			monHP -= damage;
 
-			damage = Math.pow(fighter.dm.str, 2)*0.05;
-			damage *= 0.5 + (fighter.dm.weaponAttack / 10);
-			damage += rand(damage/10);
-
-			outputText("He stares back. He deals " + int(damage) + " damage.\n\n");
-			player.HP -= damage;
+			dmAI.BasicAI(fighter);
 
 			if(monHP <= 0) Win();
 			else if(player.HP <= 0) Lose();

@@ -536,7 +536,8 @@ the text from being too boring.
 			oldStats.oldLust = 0;
 			oldStats.oldFatigue = 0;
 			oldStats.oldHunger = 0;
-			
+
+			demonlib.DeepMonsterLibInit();
 			//model.maxHP = maxHP;
 
 			// ******************************************************************************************

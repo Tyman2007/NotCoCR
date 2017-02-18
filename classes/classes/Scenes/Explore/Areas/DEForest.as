@@ -2,6 +2,7 @@
  * Created by Tyler on 2016/11/17.
  */
 package classes.Scenes.Explore.Areas {
+import classes.GlobalFlags.kMONSTERS;
 import classes.Scenes.DeepCombat.DeepCombat;
 import classes.Scenes.Explore.*;
 
@@ -17,6 +18,7 @@ import classes.Scenes.Monsters.Goblin;
 import classes.Scenes.Monsters.Imp;
 import classes.Scenes.NPCs.Jojo;
 import classes.Scenes.Camp.CabinProgress;
+
 
     public class DEForest extends BaseContent {
 
@@ -43,7 +45,7 @@ import classes.Scenes.Camp.CabinProgress;
 
             if(exploreAvailable) addButton(0, "Explore", exploreForest);
             if(woodAvailable) addButton(1, "Get Wood", searchForWood)
-            //addButton(2, "TestFight", foight);
+            addButton(2, "TestFight", foight);
         }
 
         protected function foight() {
